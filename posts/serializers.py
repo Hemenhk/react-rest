@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from secondapp.models import Post
+from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -28,8 +28,9 @@ class PostSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     class Meta:
-        model = Profile
+        model = Post
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title',
-            'content', 'image', 'image_filter<'
+            'content', 'image', 'image_filter', 'profile_id', 'profile_image',
+            'is_owner'
         ]

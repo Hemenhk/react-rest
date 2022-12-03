@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'profiles',
-    'secondapp',
+    'posts',
+    "django_rename_app",
 ]
 
 MIDDLEWARE = [
