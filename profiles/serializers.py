@@ -2,11 +2,6 @@ from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
 
-"""
-Create serializer and add a Meta class that specifies which fields
-can be accessed by the user.
-"""
-
 
 class ProfilesSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -26,14 +21,14 @@ class ProfilesSerializer(serializers.ModelSerializer):
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
             ).first()
-            #print(following)
+            # print(following)
             return following.id if following else None
         return None
 
     class Meta:
         model = Profile
         fields = [
-                'id', 'owner', 'created_at', 'updated_at', 'name',
-                'content', 'image', 'is_owner', 'following_id', 'posts_count',
-                'followers_count', 'following_count'
-                ]
+            'id', 'owner', 'created_at', 'updated_at', 'name',
+            'content', 'image', 'is_owner', 'following_id',
+            'posts_count', 'followers_count', 'following_count',
+        ]
